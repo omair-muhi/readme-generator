@@ -46,6 +46,11 @@ inquirer
         name: 'license',
         choices: ['MIT', 'GNU GPLv3', 'Mozilla Public 2.0', 'Apache 2.0', 'Boost Software 1.0'],
     },
+    {
+        type: 'input',
+        message: 'Enter github user-name:',
+        name: 'github',
+    },
     ])
     .then((response) => {
         // Empty readMeStr string
@@ -69,7 +74,7 @@ inquirer
         var testing = '## ' + 'Tests\n' + `${response.testing}` + '\n\n';
         readMeStr += testing;
         // Add license information
-        var license = '## ' + 'License\n' + 'This application is covered under the ' + `${response.license}` + '\n\n';
+        var license = '## ' + 'License\n' + 'This application is covered under the ' + `${response.license}` + ' license \n\n';
         // Add license section to end of README
         readMeStr += license;
         var licenseShield = `![license](https://img.shields.io/badge/license-${licenseAbbrev[response.license]}-brightgreen)` + '\n';
@@ -77,8 +82,13 @@ inquirer
         licenseShield += readMeStr;
         // Update README
         readMeStr = licenseShield;
+        // Add github information
+        var githubLink = `https://github.com/${response.github}`;
+        var githubLinkMd = `[${githubLink}](${githubLink})`;
+        var github = '## ' + 'Questions\n' + `${response.github}: ${githubLinkMd}` + '\n\n';
+        readMeStr += github;
         // write everything to file
-        fs.appendFile('my-project-04.md', licenseShield, (err) => {
+        fs.appendFile('my-project-05.md', readMeStr, (err) => {
             if (err !== null)
                 console.log(err);
         });
