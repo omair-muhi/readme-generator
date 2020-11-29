@@ -1,27 +1,50 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
+const inquirer = require('inquirer'); // command-line UI
+const fs = require('fs'); // FileSystem
+var licenseAbbrev = {
+    'MIT': 'MIT',
+    'GNU GPLv3': 'GNUGPLv3',
+    'Mozilla Public 2.0': 'MP2.0',
+    'Apache 2.0': 'Apache2.0',
+    'Boost Software 1.0': 'BS1.0'
+};
 
 // List of questions
 inquirer
     .prompt([{
         type: 'input',
-        message: 'What is your project title?',
+        message: 'Enter project title:',
         name: 'title',
     },
     {
         type: 'input',
-        message: 'What is your project description?',
+        message: 'Enter project description:',
         name: 'description',
     },
     {
         type: 'input',
-        message: 'Enter Installation instructions for your project:',
+        message: 'Enter installation instructions for your project:',
         name: 'installation',
     },
     {
         type: 'input',
         message: 'Enter usage details for your project:',
         name: 'usage',
+    },
+    {
+        type: 'input',
+        message: 'Enter contribution guidelines for your project:',
+        name: 'contributing',
+    },
+    {
+        type: 'input',
+        message: 'Enter test instructions for your project:',
+        name: 'testing',
+    },
+    {
+        type: 'rawlist',
+        message: 'Choose a license for your project:',
+        name: 'license',
+        choices: ['MIT', 'GNU GPLv3', 'Mozilla Public 2.0', 'Apache 2.0', 'Boost Software 1.0'],
     },
     ])
     .then((response) => {
@@ -39,7 +62,23 @@ inquirer
         // Add usage information
         var usage = '## ' + 'Usage\n' + `${response.usage}` + '\n\n';
         readMeStr += usage;
-        fs.appendFile('my-project-2.md', readMeStr, (err) => {
+        // Add contributing information
+        var contributing = '## ' + 'Contributing\n' + `${response.contributing}` + '\n\n';
+        readMeStr += contributing;
+        // Add testing information
+        var testing = '## ' + 'Tests\n' + `${response.testing}` + '\n\n';
+        readMeStr += testing;
+        // Add license information
+        var license = '## ' + 'License\n' + 'This application is covered under the ' + `${response.license}` + '\n\n';
+        // Add license section to end of README
+        readMeStr += license;
+        var licenseShield = `![license](https://img.shields.io/badge/license-${licenseAbbrev[response.license]}-brightgreen)` + '\n';
+        // Add badge to top of README
+        licenseShield += readMeStr;
+        // Update README
+        readMeStr = licenseShield;
+        // write everything to file
+        fs.appendFile('my-project-04.md', licenseShield, (err) => {
             if (err !== null)
                 console.log(err);
         });
