@@ -48,8 +48,13 @@ inquirer
     },
     {
         type: 'input',
-        message: 'Enter github user-name:',
+        message: 'Enter your github user-name:',
         name: 'github',
+    },
+    {
+        type: 'input',
+        message: 'Enter your e-mail address:',
+        name: 'email',
     },
     ])
     .then((response) => {
@@ -85,10 +90,13 @@ inquirer
         // Add github information
         var githubLink = `https://github.com/${response.github}`;
         var githubLinkMd = `[${githubLink}](${githubLink})`;
-        var github = '## ' + 'Questions\n' + `${response.github}: ${githubLinkMd}` + '\n\n';
+        var github = '## ' + 'Questions\n' + `${response.github}: ${githubLinkMd}` + '\n';
         readMeStr += github;
+        // Add email
+        readMeStr += `For additional questions, send an e-mail to: <${response.email}>\n\n`;
+
         // write everything to file
-        fs.appendFile('my-project-05.md', readMeStr, (err) => {
+        fs.appendFile('my-project-06.md', readMeStr, (err) => {
             if (err !== null)
                 console.log(err);
         });
