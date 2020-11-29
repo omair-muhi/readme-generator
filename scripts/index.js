@@ -11,51 +11,51 @@ let licenseAbbrev = {
 // List of questions
 inquirer
     .prompt([{
-        type: 'input',
-        message: 'Enter project title:',
-        name: 'title',
-    },
-    {
-        type: 'input',
-        message: 'Enter project description:',
-        name: 'description',
-    },
-    {
-        type: 'input',
-        message: 'Enter comma-separated installation instructions for your project:',
-        name: 'installation',
-    },
-    {
-        type: 'input',
-        message: 'Enter usage details for your project:',
-        name: 'usage',
-    },
-    {
-        type: 'input',
-        message: 'Enter contribution guidelines for your project:',
-        name: 'contributing',
-    },
-    {
-        type: 'input',
-        message: 'Enter comma-separated test instructions for your project:',
-        name: 'testing',
-    },
-    {
-        type: 'rawlist',
-        message: 'Choose a license for your project:',
-        name: 'license',
-        choices: ['MIT', 'GNU GPLv3', 'Mozilla Public 2.0', 'Apache 2.0', 'Boost Software 1.0'],
-    },
-    {
-        type: 'input',
-        message: 'Enter your github user-name:',
-        name: 'github',
-    },
-    {
-        type: 'input',
-        message: 'Enter your e-mail address:',
-        name: 'email',
-    },
+            type: 'input',
+            message: 'Enter project title:',
+            name: 'title',
+        },
+        {
+            type: 'input',
+            message: 'Enter project description:',
+            name: 'description',
+        },
+        {
+            type: 'input',
+            message: 'Enter comma-separated installation instructions for your project:',
+            name: 'installation',
+        },
+        {
+            type: 'input',
+            message: 'Enter usage details for your project:',
+            name: 'usage',
+        },
+        {
+            type: 'input',
+            message: 'Enter contribution guidelines for your project:',
+            name: 'contributing',
+        },
+        {
+            type: 'input',
+            message: 'Enter comma-separated test instructions for your project:',
+            name: 'testing',
+        },
+        {
+            type: 'rawlist',
+            message: 'Choose a license for your project:',
+            name: 'license',
+            choices: ['MIT', 'GNU GPLv3', 'Mozilla Public 2.0', 'Apache 2.0', 'Boost Software 1.0'],
+        },
+        {
+            type: 'input',
+            message: 'Enter your github user-name:',
+            name: 'github',
+        },
+        {
+            type: 'input',
+            message: 'Enter your e-mail address:',
+            name: 'email',
+        },
     ])
     .then((response) => {
         // Empty readMeStr string
@@ -116,7 +116,7 @@ inquirer
         // Add email
         readMeStr += `For additional questions, send an e-mail to: <${response.email.trim()}>\n\n`;
         // write everything to file
-        fs.appendFile('output.md', readMeStr, (err) => {
+        fs.appendFile('output_00.md', readMeStr, (err) => {
             if (err !== null)
                 console.log(err);
         });

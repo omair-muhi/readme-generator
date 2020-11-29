@@ -17,7 +17,8 @@ This is a node-based command-line application that allows the user to generate a
 
 
 ## Usage
-Run using: node scripts/index.js and then provide answers to the prompts.
+Run using: node scripts/index.js and then provide answers to the prompts.  
+See walkthrough video here: <https://drive.google.com/file/d/1evY0pFCWcTY-TWuRi5qtjrzp6g670QR7/view>
 
 ## Contributing
 Not Applicable
