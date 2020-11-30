@@ -82,7 +82,7 @@ inquirer
         for (let i = 0; i < installationStepsArray.length; i++) {
             installationListMd += `${i + 1}. ${installationStepsArray[i].trim()}\n`;
         }
-        let installation = '## ' + 'Installation\n' + `${installationListMd}` + '\n\n';
+        let installation = '## ' + 'Installation\n' + `${installationListMd}` + '\n';
         readMeStr += installation;
         // Add usage information
         let usage = '## ' + 'Usage\n' + `${response.usage.trim()}` + '\n\n';
@@ -97,7 +97,7 @@ inquirer
         for (let i = 0; i < testStepsArray.length; i++) {
             testListMd += `${i + 1}. ${testStepsArray[i].trim()}\n`;
         }
-        let testing = '## ' + 'Tests\n' + `${testListMd}` + '\n\n';
+        let testing = '## ' + 'Tests\n' + `${testListMd}` + '\n';
         readMeStr += testing;
         // Add license information
         let license = '## ' + 'License\n' + 'This application is covered under the ' + `${response.license}` + ' license.\n\n';
@@ -114,9 +114,9 @@ inquirer
         let github = '## ' + 'Questions\n' + `${response.github.trim()}: ${githubLinkMd}` + '<br>';
         readMeStr += github;
         // Add email
-        readMeStr += `For additional questions, send an e-mail to: <${response.email.trim()}>\n\n`;
+        readMeStr += `For additional questions, send an e-mail to: <${response.email.trim()}>`;
         // write everything to file
-        fs.appendFile('output_00.md', readMeStr, (err) => {
+        fs.appendFile('output_02.md', readMeStr, (err) => {
             if (err !== null)
                 console.log(err);
         });
