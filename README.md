@@ -15,10 +15,10 @@ This is a node-based command-line application that allows the user to generate a
 ## Installation
 1. Run npm install.
 
-
 ## Usage
 Run using: node scripts/index.js and then provide answers to the prompts.  
 See walkthrough video here: <https://drive.google.com/file/d/1evY0pFCWcTY-TWuRi5qtjrzp6g670QR7/view>
+![Application screenshot](images/readme-gen.png)
 
 ## Contributing
 Not Applicable
@@ -28,7 +28,6 @@ Not Applicable
 2. Test various license options
 3. Test formatting installation section
 4. Test formatting of Tests section
-
 
 ## License
 This application is covered under the MIT license.
